@@ -8,5 +8,3 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: 1111
       MYSQL_DATABASE: jpa-study
-
-
