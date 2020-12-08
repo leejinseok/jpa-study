@@ -5,17 +5,17 @@ spring:
     username: root
     password: 1111
 
-  jpa:
-    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
-    open-in-view: false
-    show-sql: true
-    generate-ddl: true
-    properties:
-      hibernate:
-        format_sql: true
-        implicit_naming_strategy: org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
-        physical_naming_strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
-        hbm2ddl.auto: create
+#  jpa:
+#    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+#    open-in-view: false
+#    show-sql: true
+#    generate-ddl: true
+#    properties:
+#      hibernate:
+#        format_sql: true
+#        implicit_naming_strategy: org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
+#        physical_naming_strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+#        hbm2ddl.auto: create
 
 server:
   port: 8083

@@ -53,7 +53,6 @@ public class DbConfig {
     @Primary
     @Bean(name = "entityManagerFactory")
     public LocalContainerEntityManagerFactoryBean entityManagerFactory(EntityManagerFactoryBuilder entityManagerFactoryBuilder, DataSource dataSource) {
-        LocalContainerEntityManagerFactoryBean localContainerEntityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
         return entityManagerFactoryBuilder
             .dataSource(dataSource)
             .packages(MemberRepository.class)
@@ -63,13 +62,16 @@ public class DbConfig {
 
     Map<String, Object> jpaProperties() {
         Map<String, Object> properties = new HashMap<>();
-        properties.put("database-platform", "org.hibernate.dialect.MySQL5InnoDBDialect");
-        properties.put("show-sql", true);
-        properties.put("open-in-view", false);
-        properties.put("hibernate.format_sql", true);
+        properties.put("javax.persistence.jdbc.driver", "com.mysql.cj.jdbc.Driver");
+        properties.put("javax.persistence.jdbc.user", "root");
+        properties.put("javax.persistence.jdbc.password", "1111");
+        properties.put("javax.persistence.jdbc.url","jdbc:mysql://localhost/jpa-study?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Seoul&tinyInt1isBit=false");
+        properties.put("hibernate.dialect", "org.hibernate.dialect.MySQL5InnoDBDialect");
+        properties.put("hibernate.show_sql", "true");
+        properties.put("hibernate.format_sql", "true");
+        properties.put("hibernate.use_sql_comments", "true");
+        properties.put("hibernate.id.new_generator_mappings", "true");
         properties.put("hibernate.hbm2ddl.auto", "create");
-        properties.put("hibernate.ddl-auto", "create");
-        properties.put("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
         return properties;
     }
 
