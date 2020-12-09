@@ -1,5 +1,6 @@
 package com.example.jpa;
 
+import com.example.jpa.entity.Address;
 import com.example.jpa.entity.Member;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -29,6 +30,9 @@ public class JpaApplication implements CommandLineRunner {
 
         Member member2 = new Member();
         member2.setUserName("임꺽정");
+
+//        값 타입 컬렉션 예제
+//        member2.getAddressHistory().add(new Address("서울", "강남", "123-123"));
 
         em.persist(member);
         em.persist(member1);
