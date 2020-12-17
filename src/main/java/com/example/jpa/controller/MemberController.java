@@ -1,8 +1,8 @@
 package com.example.jpa.controller;
 
 import com.example.jpa.entity.Member;
-import com.example.jpa.service.MemberService;
-import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,10 +11,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class MemberController {
 
-    private final MemberService memberService;
+    @PersistenceContext
+    EntityManager em;
 
-    @GetMapping("/members")
-    public List<Member> getMember() {
-        return memberService.getMembers();
+    @GetMapping("/test/proxy")
+    public void testProxy() {
+        Member memberProxy = em.getReference(Member.class, 1L);
+        System.out.println("memberProxy = " + memberProxy.getClass().getName());
     }
+
 }
